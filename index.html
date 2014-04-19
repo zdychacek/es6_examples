@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <script src="lib/traceur-runtime.js"></script>
+  <script src="lib/es6-module-loader.js"></script>
+  <script src="lib/system.js"></script>
+
+  <script>
+    // we want to load 'app-built' from this location, not '/lib/app-built.js'
+    System.paths['app-built'] = '/app-built.js';
+
+    // create the bundle
+    System.bundles['app-built'] = ['app/main'];
+
+    System.import('app/main').then(function(m) {
+      // app/main now loaded from the bundle, and not a separate request
+      console.log(m);
+    }).catch(function (err) {
+      console.log(err);
+    });
+  </script>
+</body>
+</html>
