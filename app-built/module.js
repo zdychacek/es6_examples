@@ -1,6 +1,6 @@
 define([], function() {
   "use strict";
-  var __moduleName = "./app/module";
+  var __moduleName = "module";
   var test = 'es6!';
   var MyClass = function MyClass() {
     console.log('ES6 Class!');

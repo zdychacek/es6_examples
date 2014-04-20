@@ -2,4 +2,4 @@ import {test, MyClass} from './module';
 console.log(test);
 new MyClass();
 
-export var name = 'Ondrej';
+export var name = 'Terezka';
