@@ -13,7 +13,7 @@
 
     System.bundles['app-built'] = ['app/main'];
 
-    System.import('app-built/main').then(function(m) {
+    System.import('app/main').then(function(m) {
       console.log(m);
     }).catch(function (err) {
       console.log(err);
