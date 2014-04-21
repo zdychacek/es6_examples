@@ -12,15 +12,16 @@ nums.forEach(v => {
   }
 });
 
-console.log('fives:', fives);
-
 // Lexical this
 var bob = {
   _name: 'Bob',
   _friends: ['John', 'Jack'],
   printFriends() {
-    this._friends.forEach(f => console.log(this._name + ' knows ' + f));
+    return this._friends.map(friend => `${this._name} knows ${friend}.`).join(' ');
   }
 }
 
-bob.printFriends();
+console.assert(
+  bob.printFriends().contains('John') &&
+  bob.printFriends().contains('Jack')
+);

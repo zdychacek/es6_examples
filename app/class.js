@@ -36,5 +36,4 @@ class Monster extends Character {
   }
 }
 
-
 export { Monster, Character };

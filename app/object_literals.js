@@ -13,10 +13,13 @@ var obj = {
     handler,
     // Methods
     toString () {
-     return 'object';
+      return 'object';
     },
     // Computed (dynamic) property names
     [ 'prop_' + (() => 42)() ]: 42
 };
 
-console.log('Enhanced object:', obj);
+console.assert(
+  'prop_42' in obj &&
+  typeof obj.handler === 'function'
+);
