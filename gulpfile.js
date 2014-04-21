@@ -17,7 +17,7 @@ gulp.task('build', function() {
     rjs({
       baseUrl: '.',
       out: 'app-built.js',
-      name: 'app-built/main',
+      name: 'app/main',
       paths: {
         app: 'app-built'
       }
