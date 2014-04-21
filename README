@@ -1,2 +1,0 @@
-traceur --dir app app-built --modules=amd
-r.js -o name=app-built/main out=app-built.js paths.app=app-built

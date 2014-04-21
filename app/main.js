@@ -1,5 +1,9 @@
-import {test, MyClass} from './module';
-console.log(test);
-new MyClass();
+import { Monster as Creature, Character } from './class';
+import './arrows';
+import './object_literals';
+import './template_strings';
+import './destructuring';
 
-export var name = 'terezka';
+var joeTheCreature = new Creature(0, 0, 'Joe');
+
+console.log('Monster name:', joeTheCreature.name);

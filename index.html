@@ -18,7 +18,9 @@
         System.paths['app/*'] = 'dist/*.js';
       }
 
-      System.import('app/main');
+      System.import('app/main')
+        .catch(console.error.bind(console));
+
     })(false);
   </script>
 </body>

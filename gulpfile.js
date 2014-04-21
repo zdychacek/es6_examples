@@ -6,6 +6,8 @@ var rjs = require('gulp-requirejs');
 var uglify = require('gulp-uglify');
 var refresh = require('gulp-livereload');
 var clean = require('gulp-clean');
+var gutil = require('gulp-util');
+var plumber = require('gulp-plumber');
 var lr = require('tiny-lr');
 var lrserver = lr();
 
@@ -15,10 +17,22 @@ var serverport = 8000;
 var srcFolder = 'app';
 var distFolder = 'dist';
 
+var onError = function (err) {
+  gutil.beep();
+  gutil.log(err);
+};
+
 gulp.task('scripts', function() {
   return gulp.src(srcFolder + '/*.js')
-    .pipe(traceur({ modules: 'amd' }))
-
+    .pipe(plumber({
+      errorHandler: onError
+    }))
+    .pipe(traceur({
+        modules: 'amd',
+        experimental: true,
+        blockBinding: true
+      })
+    )
     .pipe(gulp.dest(distFolder))
     .pipe(refresh(lrserver));
 });
