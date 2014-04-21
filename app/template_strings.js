@@ -1,9 +1,8 @@
 // Multiline strings
-console.assert(
-  `In JavaScript this is
-  not legal.`.contains('\n'), 'String does not contain new line.');
+expect(`In JavaScript this is
+  not legal.`).to.have.string('\n');
 
 var name = 'Bob';
 var time = 'today';
 
-console.assert(`Hello ${name}, how are you ${time}?` === 'Hello Bob, how are you today?', 'Messages are not equal.');
+expect(`Hello ${name}, how are you ${time}?`).to.be.equal('Hello Bob, how are you today?');

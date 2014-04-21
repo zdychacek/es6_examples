@@ -36,4 +36,8 @@ class Monster extends Character {
   }
 }
 
+var myMonster = new Monster(0, 10, 'Joe');
+
+expect(myMonster.name).to.be.equal('Joe');
+
 export { Monster, Character };

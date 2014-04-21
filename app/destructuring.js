@@ -1,7 +1,8 @@
 // list matching
 var [ a, , b ] = [ 1, 2, 3 ];
 
-console.assert(a === 1 && b === 3, 'Equality failed.');
+expect(a).to.be.equal(1);
+expect(b).to.be.equal(3);
 
 function getASTNode () {
   return {
@@ -16,31 +17,26 @@ function getASTNode () {
 // object matching
 var { op: a, lhs: { op: b }, rhs: c } = getASTNode();
 
-console.assert(
-  a === getASTNode().op &&
-  b === getASTNode().lhs.op &&
-  c === getASTNode().rhs
-, 'Equality failed.');
+var node = getASTNode();
+
+expect(node).property('op').to.be.equal(a)
+expect(node).property('lhs').property('op').to.be.equal(b);
+expect(node).property('rhs').to.be.equal(c);
 
 // object matching shorthand
 // binds `op`, `lhs` and `rhs` in scope
-var { op, lhs, rhs } = getASTNode();
+var { op, lhs, rhs } = node;
 
-var stringify = JSON.stringify;
-
-console.assert(
-  stringify(op) === stringify(getASTNode().op) &&
-  stringify(lhs) === stringify(getASTNode().lhs) &&
-  stringify(rhs) === stringify(getASTNode().rhs)
-, 'Equality failed.');
+expect(op).to.be.equal(node.op);
+expect(lhs).to.be.deep.equal(node.lhs);
+expect(rhs).to.be.equal(node.rhs);
 
 // Can be used in parameter position
 function g({ name: x }) {
   return x;
 }
-
-console.assert( g({ name: 5 }) === 5, 'Returned value is not 5.');
+expect(g({ name: 5 })).to.be.equal(5);
 
 // Fail-soft destructuring
 var [ a ] = [];
-console.assert(a === undefined, 'Is not undefined.');
+expect(a).to.be.undefined;

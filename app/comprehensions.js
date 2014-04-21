@@ -11,10 +11,9 @@ var results = [
       { name: c.name, age: c.age }
 ];
 
-console.assert(
-  JSON.stringify(results).contains('Joe') &&
-  JSON.stringify(results).contains('Brad')
-, 'Joe or Brad are not our customers.');
+expect(results).to.have.length(2);
+expect(results[0]).property('name', 'Joe');
+expect(results[1]).property('name', 'Brad');
 
 // Generator comprehensions (lazy loading)
 var results = (
@@ -23,5 +22,5 @@ var results = (
       { name: c.name, age: c.age }
 );
 
-console.assert(results.next().value.name === 'Joe', 'First customer is not Joe.');
-console.assert(results.next().value.name === 'Brad', 'Second customer is not Brad.');
+expect(results.next()).property('value').property('name', 'Joe');
+expect(results.next()).property('value').property('name', 'Brad');

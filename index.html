@@ -4,11 +4,14 @@
   <title>Traceur &amp; ES6 modules demo</title>
 </head>
 <body>
+  <script src="lib/chai.js"></script>
   <script src="lib/traceur-runtime.min.js"></script>
   <script src="lib/es6-module-loader.min.js"></script>
   <script src="lib/system.js"></script>
 
   <script>
+    expect = chai.expect;
+
     (function (prodMode) {
       if (prodMode) {
         System.paths['app'] = 'dist/all.min.js';

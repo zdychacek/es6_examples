@@ -20,4 +20,4 @@ var myPoint = new Point(10, 20);
 
 Object.assign(myPoint, { origin: new Point(0, 0) });
 
-console.assert(myPoint.origin, 'Point has origin.');
+expect(myPoint).property('origin').to.be.defined;

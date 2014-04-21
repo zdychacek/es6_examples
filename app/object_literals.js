@@ -1,5 +1,11 @@
 function handler () {
-  console.log('Handler is called...');
+  var x = 5;
+  var y = 6;
+
+  // returning values from current scope in object literal
+  return {
+    x, y
+  };
 }
 
 var theProtoObj = {
@@ -19,7 +25,6 @@ var obj = {
     [ 'prop_' + (() => 42)() ]: 42
 };
 
-console.assert(
-  'prop_42' in obj &&
-  typeof obj.handler === 'function'
-);
+expect(obj).to.have.property('prop_42');
+expect(obj.handler).to.be.a('function');
+expect(obj.handler()).to.be.deep.equal({ x: 5, y: 6});

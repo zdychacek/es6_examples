@@ -21,7 +21,4 @@ var bob = {
   }
 }
 
-console.assert(
-  bob.printFriends().contains('John') &&
-  bob.printFriends().contains('Jack')
-);
+expect(bob.printFriends()).to.have.string('John').and.to.have.string('Jack');
