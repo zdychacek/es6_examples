@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Traceur &amp; ES6 modules demo</title>
 </head>
 <body>
-  <script src="lib/traceur-runtime.js"></script>
-  <script src="lib/es6-module-loader.js"></script>
+  <script src="lib/traceur-runtime.min.js"></script>
+  <script src="lib/es6-module-loader.min.js"></script>
   <script src="lib/system.js"></script>
 
   <script>
-    System.paths['app-built'] = '/app-built.js';
+    (function (prodMode) {
+      if (prodMode) {
+        System.paths['app'] = 'dist/all.min.js';
+        System.bundles['app'] = ['app/main'];
+      }
+      else {
+        System.paths['app/*'] = 'dist/*.js';
+      }
 
-    System.bundles['app-built'] = ['app/main'];
-
-    System.import('app/main').then(function(m) {
-      console.log(m);
-    }).catch(function (err) {
-      console.log(err);
-    });
+      System.import('app/main');
+    })(false);
   </script>
 </body>
 </html>
