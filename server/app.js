@@ -14,7 +14,6 @@ async function asyncValue(value) {
   console.log('[async fun] waiting ...')
   var value = await asyncValue(42);
   console.log('[async fun] got value ' + 42)
-  done();
 })();
 
 console.log('normal program flow ...')
