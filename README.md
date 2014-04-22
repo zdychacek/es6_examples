@@ -1,4 +1,4 @@
-es6_examples
+ES6 examples & Traceur
 ============
 1. npm install
 1. npm install gulp -g
