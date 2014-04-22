@@ -1,8 +1,8 @@
 // list matching
 var [ a, , b ] = [ 1, 2, 3 ];
 
-expect(a).to.be.equal(1);
-expect(b).to.be.equal(3);
+expect(a).to.be.eql(1);
+expect(b).to.be.eql(3);
 
 function getASTNode () {
   return {
@@ -14,28 +14,36 @@ function getASTNode () {
   };
 }
 
-// object matching
-var { op: a, lhs: { op: b }, rhs: c } = getASTNode();
-
 var node = getASTNode();
 
-expect(node).property('op').to.be.equal(a)
-expect(node).property('lhs').property('op').to.be.equal(b);
-expect(node).property('rhs').to.be.equal(c);
+// object matching
+var { op: a, lhs: { op: b }, rhs: c } = node;
+
+expect(node).property('op').to.be.eql(a);
+expect(node).deep.property('lhs.op').to.be.eql(b);
+expect(node).property('rhs').to.be.eql(c);
 
 // object matching shorthand
 // binds `op`, `lhs` and `rhs` in scope
 var { op, lhs, rhs } = node;
 
-expect(op).to.be.equal(node.op);
-expect(lhs).to.be.deep.equal(node.lhs);
-expect(rhs).to.be.equal(node.rhs);
+expect(op).to.be.eql(node.op);
+expect(lhs).to.be.eql(node.lhs);
+expect(rhs).to.be.eql(node.rhs);
 
 // Can be used in parameter position
-function g({ name: x }) {
-  return x;
+function createPerson({ name, age, place: residence }) {
+  return { name, age, residence };
 }
-expect(g({ name: 5 })).to.be.equal(5);
+expect(createPerson({
+  name: 'Ondrej',
+  age: 26,
+  place: 'Brno'
+})).to.be.eql({
+  name: 'Ondrej',
+  age: 26,
+  residence: 'Brno'
+});
 
 // Fail-soft destructuring
 var [ a ] = [];

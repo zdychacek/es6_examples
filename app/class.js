@@ -13,9 +13,8 @@ class Monster extends Character {
   }
 
   attack (character) {
-    super.attack(character);
-    // Can also be written as:
     // super(character);
+    super.attack(character);
   }
 
   get name () {
@@ -34,10 +33,15 @@ class Monster extends Character {
     if (value < 0) throw new Error('Health must be non-negative.');
     this.health_ = value;
   }
+
+  // static method
+  static createNewMonster () {
+    return new Monster(...arguments);
+  }
 }
+expect(Monster.createNewMonster).to.be.instanceof(Function);
 
 var myMonster = new Monster(0, 10, 'Joe');
-
 expect(myMonster.name).to.be.equal('Joe');
 
 export { Monster, Character };

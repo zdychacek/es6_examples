@@ -15,3 +15,9 @@ function f3 (x, y, z) {
 }
 // Pass each elem of array as argument
 expect(f3(...[1,2,3])).to.be.equal(6);
+
+// merge arrays into one
+let arr1 = [1, 2];
+let arr2 = [5, 6];
+
+expect([...arr1, 3, 4, ...arr2]).to.be.eql([1, 2, 3, 4, 5, 6]);

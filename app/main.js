@@ -1,5 +1,7 @@
-// Examples from https://github.com/lukehoban/es6features
-
+/* Examples from:
+ * https://github.com/lukehoban/es6features
+ * https://github.com/google/traceur-compiler/wiki/LanguageFeatures
+ */
 import './arrows';
 import './object_literals';
 import './template_strings';
@@ -9,6 +11,8 @@ import './block_bindings';
 import './iterators_forof';
 import './comprehensions';
 import './new_api';
+import './promises';
+import './symbols';
 
 import { Monster as Creature, Character } from './class';
 

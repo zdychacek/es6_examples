@@ -27,4 +27,4 @@ var obj = {
 
 expect(obj).to.have.property('prop_42');
 expect(obj.handler).to.be.a('function');
-expect(obj.handler()).to.be.deep.equal({ x: 5, y: 6});
+expect(obj.handler()).to.be.eql({ x: 5, y: 6});

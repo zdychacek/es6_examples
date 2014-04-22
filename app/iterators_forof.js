@@ -1,11 +1,11 @@
 var fibonacci = {
   [Symbol.iterator]() {
-    var pre = 0;
-    var cur = 1;
+    var pre = 0, cur = 1;
 
     return {
       next() {
         [ pre, cur ] = [ cur, pre + cur ];
+
         return { done: false, value: cur };
       }
     }
@@ -22,11 +22,10 @@ for (var n of fibonacci) {
 
 // Generators version
 var fibonacci = {
-  [Symbol.iterator]: function*() {
-    var pre = 0;
-    var cur = 1;
+  *[Symbol.iterator]() {
+    var pre = 0, cur = 1;
 
-    for (;;) {
+    while (true) {
       [ pre, cur ] = [ cur, pre + cur ];
 
       yield cur;
