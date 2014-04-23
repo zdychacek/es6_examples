@@ -13,6 +13,7 @@ import './comprehensions';
 import './new_api';
 import './promises';
 import './symbols';
+import './async_functions';
 
 import { Monster as Creature, Character } from './class';
 
