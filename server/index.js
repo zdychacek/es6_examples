@@ -1,5 +1,10 @@
 var traceur = require('traceur');
+
+// override require
 traceur.require.makeDefault();
+// enable experimental features
 traceur.options.experimental = true;
-require('../lib/traceur-runtime.min')
-require('./app')
+traceur.options.blockBinding = true;
+
+// include app
+require('./app');
